@@ -41,7 +41,7 @@ func New(config Config) (*Service, error) {
 		return nil, microerror.Maskf(invalidConfigError, "name must not be empty")
 	}
 	if config.Source == "" {
-		return nil, microerror.Maskf(invalidConfigError, "name must not be empty")
+		return nil, microerror.Maskf(invalidConfigError, "source must not be empty")
 	}
 
 	newService := &Service{
