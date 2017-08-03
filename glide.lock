@@ -1,5 +1,5 @@
-hash: 59164fb268d21a13ce540bb41a168e454eb3fdd2c765612a0fb65ad911e0c38d
-updated: 2017-08-03T09:01:04.638155056+02:00
+hash: 94e10c18c85f25a441886f7cc94bff107d559f2ab5a03eae4f8846ec9234bf99
+updated: 2017-08-03T12:22:26.307530565+02:00
 imports:
 - name: github.com/giantswarm/microerror
   version: 7bf6a0a6d24b1e3a03af3ed3a8e3531d792ea3e3
