@@ -73,6 +73,14 @@ func (e *Endpoint) Encoder() kithttp.EncodeResponseFunc {
 	return func(ctx context.Context, w http.ResponseWriter, response interface{}) error {
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 
+		rs, ok := response.(healthz.Responses)
+		if !ok {
+			return microerror.Maskf(wrongTypeError, "expected '%T' got '%T'", healthz.Responses{}, response)
+		}
+		if rs.HasFailed() {
+			w.WriteHeader(http.StatusInternalServerError)
+		}
+
 		return json.NewEncoder(w).Encode(response)
 	}
 }
@@ -85,10 +93,6 @@ func (e *Endpoint) Endpoint() kitendpoint.Endpoint {
 			res, err := s.GetHealthz(ctx)
 			if err != nil {
 				return nil, microerror.Mask(err)
-			}
-
-			if res.Failed {
-				// TODO emit metrics
 			}
 
 			healthzResponses = append(healthzResponses, res)

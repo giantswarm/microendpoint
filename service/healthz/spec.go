@@ -10,6 +10,18 @@ type Response struct {
 	Name        string `json:"name" yaml:"name"`
 }
 
+type Responses []Response
+
+func (rs Responses) HasFailed() bool {
+	for _, r := range rs {
+		if r.Failed {
+			return true
+		}
+	}
+
+	return false
+}
+
 // Service describes how an implementation of a health check has to be done.
 type Service interface {
 	// GetHealthz executes the health check business logic. It always returns a
