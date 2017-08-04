@@ -49,6 +49,16 @@ func DefaultConfig() Config {
 	}
 }
 
+// Service implements the healthz service interface.
+type Service struct {
+	// Dependencies.
+	k8sClient kubernetes.Interface
+	logger    micrologger.Logger
+
+	// Settings.
+	timeout time.Duration
+}
+
 // New creates a new configured healthz service.
 func New(config Config) (*Service, error) {
 	// Dependencies.
@@ -74,16 +84,6 @@ func New(config Config) (*Service, error) {
 	}
 
 	return newService, nil
-}
-
-// Service implements the healthz service interface
-type Service struct {
-	// Dependencies.
-	k8sClient kubernetes.Interface
-	logger    micrologger.Logger
-
-	// Settings.
-	timeout time.Duration
 }
 
 // GetHealthz implements the health check for Kubernetes.
