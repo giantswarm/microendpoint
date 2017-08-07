@@ -75,7 +75,6 @@ func (s *testService) GetHealthz(ctx context.Context) (healthz.Response, error) 
 }
 
 type testWriter struct {
-	// Settings.
 	statusCode int
 }
 
