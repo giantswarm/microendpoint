@@ -3,6 +3,7 @@ package healthz
 import (
 	"context"
 	"net/http"
+	"net/http/httptest"
 	"testing"
 
 	"github.com/giantswarm/micrologger/microloggertest"
@@ -19,7 +20,7 @@ func Test_Endpoint_ServiceFailed_True(t *testing.T) {
 	}{
 		{
 			Failed:             false,
-			ExpectedStatusCode: 0,
+			ExpectedStatusCode: http.StatusOK,
 		},
 		{
 			Failed:             true,
@@ -49,15 +50,16 @@ func Test_Endpoint_ServiceFailed_True(t *testing.T) {
 			t.Fatalf("test", i+1, "expected", nil, "got", err)
 		}
 
-		w := &testWriter{}
+		w := httptest.NewRecorder()
 
 		err = encoder(context.TODO(), w, res)
 		if err != nil {
 			t.Fatalf("test", i+1, "expected", nil, "got", err)
 		}
 
-		if w.StatusCode() != tc.ExpectedStatusCode {
-			t.Fatalf("test", i+1, "expected", tc.ExpectedStatusCode, "got", w.StatusCode())
+		statusCode := w.Result().StatusCode
+		if statusCode != tc.ExpectedStatusCode {
+			t.Fatalf("test", i+1, "expected", tc.ExpectedStatusCode, "got", statusCode)
 		}
 	}
 }
@@ -72,24 +74,4 @@ func (s *testService) GetHealthz(ctx context.Context) (healthz.Response, error) 
 	}
 
 	return response, nil
-}
-
-type testWriter struct {
-	statusCode int
-}
-
-func (rw *testWriter) Header() http.Header {
-	return http.Header{}
-}
-
-func (rw *testWriter) StatusCode() int {
-	return rw.statusCode
-}
-
-func (rw *testWriter) Write(b []byte) (int, error) {
-	return 0, nil
-}
-
-func (rw *testWriter) WriteHeader(c int) {
-	rw.statusCode = c
 }
