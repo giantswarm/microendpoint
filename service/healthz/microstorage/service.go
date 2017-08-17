@@ -23,7 +23,7 @@ const (
 	SuccessMessage = "all good"
 	// Timeout is the time being waited until timing out health check, which
 	// renders its result unsuccessful.
-	Timeout = 5 * time.Second
+	Timeout = 10 * time.Second
 )
 
 const (
@@ -130,27 +130,17 @@ func (s *Service) GetHealthz(ctx context.Context) (healthz.Response, error) {
 }
 
 func (s *Service) getHealthzWithError(ctx context.Context) error {
-	exists, err := s.storage.Exists(ctx, HealthCheckKey)
+	err := s.storage.Put(ctx, HealthCheckKey, HealthCheckValue)
 	if err != nil {
 		return microerror.Mask(err)
-	}
-	if exists {
-		err := s.storage.Delete(ctx, HealthCheckKey)
-		if err != nil {
-			return microerror.Mask(err)
-		}
 	}
 
-	err = s.storage.Create(ctx, HealthCheckKey, HealthCheckValue)
+	v, err := s.storage.Search(ctx, HealthCheckKey)
 	if err != nil {
 		return microerror.Mask(err)
 	}
-	value, err := s.storage.Search(ctx, HealthCheckKey)
-	if err != nil {
-		return microerror.Mask(err)
-	}
-	if value != HealthCheckValue {
-		return microerror.Maskf(executionFailedError, "expected health check value '%s' got '%s'", HealthCheckValue, value)
+	if v != HealthCheckValue {
+		return microerror.Maskf(executionFailedError, "expected health check value '%s' got '%s'", HealthCheckValue, v)
 	}
 
 	return nil
