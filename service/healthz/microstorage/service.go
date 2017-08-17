@@ -23,7 +23,7 @@ const (
 	SuccessMessage = "all good"
 	// Timeout is the time being waited until timing out health check, which
 	// renders its result unsuccessful.
-	Timeout = 5 * time.Second
+	Timeout = 10 * time.Second
 )
 
 const (
