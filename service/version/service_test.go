@@ -12,22 +12,24 @@ import (
 
 func Test_Get(t *testing.T) {
 	testCases := []struct {
-		description    string
-		gitCommit      string
-		name           string
-		source         string
-		versionBundles []versionbundle.Bundle
-		errorExpected  bool
-		result         Response
+		description                       string
+		gitCommit                         string
+		name                              string
+		source                            string
+		versionBundles                    []versionbundle.Bundle
+		errorExpected                     bool
+		errorExpectedDuringInitialization bool
+		result                            Response
 	}{
 		// Case 0. A valid configuration.
 		{
-			description:    "test desc",
-			gitCommit:      "b6bf741b5c34be4fff51d944f973318d8b078284",
-			name:           "api",
-			source:         "microkit",
-			versionBundles: nil,
-			errorExpected:  false,
+			description:                       "test desc",
+			gitCommit:                         "b6bf741b5c34be4fff51d944f973318d8b078284",
+			name:                              "api",
+			source:                            "microkit",
+			versionBundles:                    nil,
+			errorExpected:                     false,
+			errorExpectedDuringInitialization: false,
 			result: Response{
 				Description:    "test desc",
 				GitCommit:      "b6bf741b5c34be4fff51d944f973318d8b078284",
@@ -102,7 +104,8 @@ func Test_Get(t *testing.T) {
 					WIP:          false,
 				},
 			},
-			errorExpected: false,
+			errorExpected:                     false,
+			errorExpectedDuringInitialization: false,
 			result: Response{
 				Description: "test desc",
 				GitCommit:   "b6bf741b5c34be4fff51d944f973318d8b078284",
@@ -170,14 +173,40 @@ func Test_Get(t *testing.T) {
 			},
 		},
 
-		// Case 2. Missing git commit.
+		// Case 2. Ensure version bundle validation during service initialization.
+		//
+		// NOTE that changelogs and components are required.
 		{
-			description:   "test desc",
-			gitCommit:     "",
-			name:          "microendpoint",
-			source:        "microkit",
-			errorExpected: true,
-			result:        Response{},
+			description: "test desc",
+			gitCommit:   "b6bf741b5c34be4fff51d944f973318d8b078284",
+			name:        "api",
+			source:      "microkit",
+			versionBundles: []versionbundle.Bundle{
+				{
+					Changelogs:   []versionbundle.Changelog{},
+					Components:   []versionbundle.Component{},
+					Dependencies: []versionbundle.Dependency{},
+					Deprecated:   false,
+					Name:         "cloud-config-operator",
+					Time:         time.Unix(20, 15),
+					Version:      "0.2.0",
+					WIP:          false,
+				},
+			},
+			errorExpected:                     false,
+			errorExpectedDuringInitialization: true,
+			result: Response{},
+		},
+
+		// Case 3. Missing git commit.
+		{
+			description:                       "test desc",
+			gitCommit:                         "",
+			name:                              "microendpoint",
+			source:                            "microkit",
+			errorExpected:                     true,
+			errorExpectedDuringInitialization: false,
+			result: Response{},
 		},
 	}
 
@@ -190,18 +219,20 @@ func Test_Get(t *testing.T) {
 		config.VersionBundles = tc.versionBundles
 
 		service, err := New(config)
-		if !tc.errorExpected && err != nil {
-			t.Fatal("case", i, "expected", nil, "got", err)
-		}
-
-		if !tc.errorExpected {
-			response, err := service.Get(context.TODO(), DefaultRequest())
-			if !tc.errorExpected && err != nil {
-				t.Fatal("case", i, "expected", nil, "got", err)
+		if tc.errorExpectedDuringInitialization {
+			if err == nil {
+				t.Fatal("case", i, "expected", "error", "got", nil)
 			}
+		} else {
+			if !tc.errorExpected {
+				response, err := service.Get(context.TODO(), DefaultRequest())
+				if !tc.errorExpected && err != nil {
+					t.Fatal("case", i, "expected", nil, "got", err)
+				}
 
-			if !reflect.DeepEqual(*response, tc.result) {
-				t.Fatal("case", i, "expected", tc.result, "got", response)
+				if !reflect.DeepEqual(*response, tc.result) {
+					t.Fatal("case", i, "expected", tc.result, "got", response)
+				}
 			}
 		}
 	}

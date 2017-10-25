@@ -56,6 +56,13 @@ func New(config Config) (*Service, error) {
 		return nil, microerror.Maskf(invalidConfigError, "config.Source must not be empty")
 	}
 
+	if len(config.VersionBundles) != 0 {
+		err := versionbundle.ValidateBundles(config.VersionBundles).Validate()
+		if err != nil {
+			return nil, microerror.Mask(err)
+		}
+	}
+
 	newService := &Service{
 		description:    config.Description,
 		gitCommit:      config.GitCommit,
