@@ -21,15 +21,15 @@ func Test_Aggregate(t *testing.T) {
 			ErrorMatcher:           nil,
 		},
 
-		// Test 1 is the same as 0 but with an empty capabilities list.
+		// Test 1 is the same as 0 but with an empty list of version bundles.
 		{
 			Bundles:                []Bundle{},
 			ExpectedGroupedBundles: nil,
 			ErrorMatcher:           nil,
 		},
 
-		// Test 2 ensures a single bundle within the given capabilities is within
-		// the aggregated state as it is.
+		// Test 2 ensures a single version bundle within the given list of version bundles
+		// is within the aggregated state as it is.
 		{
 			Bundles: []Bundle{
 				{
@@ -110,8 +110,8 @@ func Test_Aggregate(t *testing.T) {
 			ErrorMatcher: nil,
 		},
 
-		// Test 3 ensures depending bundles within the given capabilities are
-		// bundled together within the aggregated state.
+		// Test 3 ensures depending version bundles within the given list of version
+		// bundles are aggregated together within the aggregated state.
 		{
 			Bundles: []Bundle{
 				{
@@ -252,10 +252,10 @@ func Test_Aggregate(t *testing.T) {
 			ErrorMatcher: nil,
 		},
 
-		// Test 4 ensures depending bundles within the given capabilities are not
-		// bundled together within the aggregated state in case their dependency
-		// definitions do not meet their constraints. Thus the aggregated result
-		// should be empty because there is no proper bundle available.
+		// Test 4 ensures depending version bundles are not aggregated together in
+		// case their dependency definitions do not meet the defined constraints.
+		// Thus the aggregated state should be empty because there is no proper
+		// distribution available.
 		{
 			Bundles: []Bundle{
 				{
@@ -328,9 +328,9 @@ func Test_Aggregate(t *testing.T) {
 			ErrorMatcher:           nil,
 		},
 
-		// Test 5 ensures when having a operator capability containing two bundles
-		// [a1,a2] and having another operator capability containing one bundle
-		// [b1], there should be two aggregated capabilities [[a1,b1],[a2,b1]].
+		// Test 5 ensures when having an operator's version bundles [a1,a2] and
+		// having another operator's version bundles [b1], there should be
+		// two aggregated distributions [[a1,b1],[a2,b1]].
 		{
 			Bundles: []Bundle{
 				{
@@ -558,12 +558,12 @@ func Test_Aggregate(t *testing.T) {
 			ErrorMatcher: nil,
 		},
 
-		// Test 6 ensures when having a operator capability containing two bundles
-		// [a1,a2] and having another operator capability containing one bundle
-		// [b1], there should be one aggregated capabilities [[a2,b1]].
+		// Test 6 ensures when having an operator's version bundles [a1,a2] and
+		// having another operator's version bundles [b1], there should be one
+		// aggregated distribution [[a2,b1]].
 		//
 		// NOTE a1 requires a dependency which cannot be fulfilled. This is why
-		// there is only one possible option.
+		// there is only one possible distribution.
 		{
 			Bundles: []Bundle{
 				{

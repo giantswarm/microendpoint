@@ -4,11 +4,11 @@ import (
 	"github.com/giantswarm/microerror"
 )
 
-var invalidAggregationError = microerror.New("invalid aggregation")
+var invalidAggregatedBundlesError = microerror.New("invalid aggregated bundles")
 
-// IsInvalidAggregationError asserts invalidAggregationError.
-func IsInvalidAggregationError(err error) bool {
-	return microerror.Cause(err) == invalidAggregationError
+// IsInvalidAggregatedBundlesError asserts invalidAggregatedBundlesError.
+func IsInvalidAggregatedBundlesError(err error) bool {
+	return microerror.Cause(err) == invalidAggregatedBundlesError
 }
 
 var invalidBundleError = microerror.New("invalid bundle")
@@ -16,6 +16,13 @@ var invalidBundleError = microerror.New("invalid bundle")
 // IsInvalidBundleError asserts invalidBundleError.
 func IsInvalidBundleError(err error) bool {
 	return microerror.Cause(err) == invalidBundleError
+}
+
+var invalidBundlesError = microerror.New("invalid bundles")
+
+// IsInvalidBundlesError asserts invalidBundlesError.
+func IsInvalidBundlesError(err error) bool {
+	return microerror.Cause(err) == invalidBundlesError
 }
 
 var invalidCapabilityError = microerror.New("invalid capability")

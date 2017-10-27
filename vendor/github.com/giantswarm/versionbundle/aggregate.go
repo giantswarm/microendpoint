@@ -7,18 +7,18 @@ import (
 	"github.com/giantswarm/microerror"
 )
 
-// Aggregate merges bundles based on dependencies version bundles within
-// the given bundles define for their components.
+// Aggregate merges version bundles based on dependencies each version bundle
+// within the given version bundles define for their own components.
 func Aggregate(bundles []Bundle) ([][]Bundle, error) {
 	if len(bundles) == 0 {
 		return nil, nil
 	}
 
-	var groupedBundles [][]Bundle
+	var aggregatedBundles [][]Bundle
 
 	if len(bundles) == 1 {
-		groupedBundles = append(groupedBundles, bundles)
-		return groupedBundles, nil
+		aggregatedBundles = append(aggregatedBundles, bundles)
+		return aggregatedBundles, nil
 	}
 
 	for _, b1 := range bundles {
@@ -49,7 +49,7 @@ func Aggregate(bundles []Bundle) ([][]Bundle, error) {
 		sort.Sort(SortBundlesByVersion(newGroup))
 		sort.Stable(SortBundlesByName(newGroup))
 
-		if containsGroupedBundle(groupedBundles, newGroup) {
+		if containsAggregatedBundle(aggregatedBundles, newGroup) {
 			continue
 		}
 
@@ -57,15 +57,15 @@ func Aggregate(bundles []Bundle) ([][]Bundle, error) {
 			continue
 		}
 
-		groupedBundles = append(groupedBundles, newGroup)
+		aggregatedBundles = append(aggregatedBundles, newGroup)
 	}
 
-	err := ValidateGroupedBundles(groupedBundles).Validate()
+	err := AggregatedBundles(aggregatedBundles).Validate()
 	if err != nil {
 		return nil, microerror.Mask(err)
 	}
 
-	return groupedBundles, nil
+	return aggregatedBundles, nil
 }
 
 func bundlesConflictWithDependencies(b1, b2 Bundle) bool {
@@ -84,7 +84,7 @@ func bundlesConflictWithDependencies(b1, b2 Bundle) bool {
 	return false
 }
 
-func containsGroupedBundle(list [][]Bundle, item []Bundle) bool {
+func containsAggregatedBundle(list [][]Bundle, item []Bundle) bool {
 	for _, grouped := range list {
 		if reflect.DeepEqual(grouped, item) {
 			return true
