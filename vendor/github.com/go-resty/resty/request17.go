@@ -1,6 +1,6 @@
 // +build go1.7 go1.8
 
-// Copyright (c) 2015-2016 Jeevanandam M (jeeva@myjeeva.com)
+// Copyright (c) 2015-2018 Jeevanandam M (jeeva@myjeeva.com)
 // 2016 Andrew Grigorev (https://github.com/ei-grad)
 // All rights reserved.
 // resty source code and usage is governed by a MIT style
@@ -18,35 +18,36 @@ import (
 
 // Request type is used to compose and send individual request from client
 // go-resty is provide option override client level settings such as
-//		Auth Token, Basic Auth credentials, Header, Query Param, Form Data, Error object
+// Auth Token, Basic Auth credentials, Header, Query Param, Form Data, Error object
 // and also you can add more options for that particular request
-//
 type Request struct {
 	URL        string
 	Method     string
+	Token      string
 	QueryParam url.Values
 	FormData   url.Values
 	Header     http.Header
-	UserInfo   *User
-	Token      string
+	Time       time.Time
 	Body       interface{}
 	Result     interface{}
 	Error      interface{}
-	Time       time.Time
 	RawRequest *http.Request
 	SRV        *SRVRecord
+	UserInfo   *User
 
-	client              *Client
-	bodyBuf             *bytes.Buffer
 	isMultiPart         bool
 	isFormData          bool
 	setContentLength    bool
 	isSaveResponse      bool
-	outputFile          string
-	multipartFiles      []*File
 	notParseResponse    bool
-	ctx                 context.Context
+	outputFile          string
 	fallbackContentType string
+	ctx                 context.Context
+	pathParams          map[string]string
+	client              *Client
+	bodyBuf             *bytes.Buffer
+	multipartFiles      []*File
+	multipartFields     []*multipartField
 }
 
 // SetContext method sets the context.Context for current Request. It allows
