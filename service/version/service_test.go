@@ -5,7 +5,6 @@ import (
 	"reflect"
 	"runtime"
 	"testing"
-	"time"
 
 	"github.com/giantswarm/versionbundle"
 )
@@ -71,12 +70,8 @@ func Test_Get(t *testing.T) {
 							Version: "1.7.1",
 						},
 					},
-					Dependencies: []versionbundle.Dependency{},
-					Deprecated:   false,
-					Name:         "cloud-config-operator",
-					Time:         time.Unix(20, 15),
-					Version:      "0.2.0",
-					WIP:          false,
+					Name:    "cloud-config-operator",
+					Version: "0.2.0",
 				},
 				{
 					Changelogs: []versionbundle.Changelog{
@@ -96,12 +91,8 @@ func Test_Get(t *testing.T) {
 							Version: "1.7.2",
 						},
 					},
-					Dependencies: []versionbundle.Dependency{},
-					Deprecated:   false,
-					Name:         "cloud-config-operator",
-					Time:         time.Unix(50, 20),
-					Version:      "0.3.0",
-					WIP:          false,
+					Name:    "cloud-config-operator",
+					Version: "0.3.0",
 				},
 			},
 			errorExpected:                     false,
@@ -137,12 +128,8 @@ func Test_Get(t *testing.T) {
 								Version: "1.7.1",
 							},
 						},
-						Dependencies: []versionbundle.Dependency{},
-						Deprecated:   false,
-						Name:         "cloud-config-operator",
-						Time:         time.Unix(20, 15),
-						Version:      "0.2.0",
-						WIP:          false,
+						Name:    "cloud-config-operator",
+						Version: "0.2.0",
 					},
 					{
 						Changelogs: []versionbundle.Changelog{
@@ -162,12 +149,8 @@ func Test_Get(t *testing.T) {
 								Version: "1.7.2",
 							},
 						},
-						Dependencies: []versionbundle.Dependency{},
-						Deprecated:   false,
-						Name:         "cloud-config-operator",
-						Time:         time.Unix(50, 20),
-						Version:      "0.3.0",
-						WIP:          false,
+						Name:    "cloud-config-operator",
+						Version: "0.3.0",
 					},
 				},
 			},
@@ -183,14 +166,10 @@ func Test_Get(t *testing.T) {
 			source:      "microkit",
 			versionBundles: []versionbundle.Bundle{
 				{
-					Changelogs:   []versionbundle.Changelog{},
-					Components:   []versionbundle.Component{},
-					Dependencies: []versionbundle.Dependency{},
-					Deprecated:   false,
-					Name:         "cloud-config-operator",
-					Time:         time.Unix(20, 15),
-					Version:      "0.2.0",
-					WIP:          false,
+					Changelogs: []versionbundle.Changelog{},
+					Components: []versionbundle.Component{},
+					Name:       "cloud-config-operator",
+					Version:    "0.2.0",
 				},
 			},
 			errorExpected:                     false,
