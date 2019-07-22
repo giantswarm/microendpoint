@@ -29,16 +29,6 @@ type Config struct {
 	Service *version.Service
 }
 
-// DefaultConfig provides a default configuration to create a new version
-// endpoint by best effort.
-func DefaultConfig() Config {
-	return Config{
-		// Dependencies.
-		Logger:  nil,
-		Service: nil,
-	}
-}
-
 // New creates a new configured version endpoint.
 func New(config Config) (*Endpoint, error) {
 	// Dependencies.
