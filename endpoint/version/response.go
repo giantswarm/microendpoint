@@ -10,6 +10,7 @@ type Response struct {
 	Name           string                 `json:"name"`
 	OSArch         string                 `json:"os_arch"`
 	Source         string                 `json:"source"`
+	Version        string                 `json:"version"`
 	VersionBundles []versionbundle.Bundle `json:"version_bundles"`
 }
 

@@ -81,14 +81,16 @@ func (e *Endpoint) Endpoint() kitendpoint.Endpoint {
 			return nil, microerror.Mask(err)
 		}
 
-		response := DefaultResponse()
-		response.Description = serviceResponse.Description
-		response.GitCommit = serviceResponse.GitCommit
-		response.GoVersion = serviceResponse.GoVersion
-		response.Name = serviceResponse.Name
-		response.OSArch = serviceResponse.OSArch
-		response.Source = serviceResponse.Source
-		response.VersionBundles = serviceResponse.VersionBundles
+		response := &Response{
+			Description:    serviceResponse.Description,
+			GitCommit:      serviceResponse.GitCommit,
+			GoVersion:      serviceResponse.GoVersion,
+			Name:           serviceResponse.Name,
+			OSArch:         serviceResponse.OSArch,
+			Source:         serviceResponse.Source,
+			Version:        serviceResponse.Version,
+			VersionBundles: serviceResponse.VersionBundles,
+		}
 
 		return response, nil
 	}
