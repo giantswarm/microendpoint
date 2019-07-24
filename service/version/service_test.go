@@ -185,17 +185,18 @@ func Test_Get(t *testing.T) {
 			source:                            "microkit",
 			errorExpected:                     true,
 			errorExpectedDuringInitialization: false,
-			result: Response{},
+			result:                            Response{},
 		},
 	}
 
 	for i, tc := range testCases {
-		config := DefaultConfig()
-		config.Description = tc.description
-		config.GitCommit = tc.gitCommit
-		config.Name = tc.name
-		config.Source = tc.source
-		config.VersionBundles = tc.versionBundles
+		config := Config{
+			Description:    tc.description,
+			GitCommit:      tc.gitCommit,
+			Name:           tc.name,
+			Source:         tc.source,
+			VersionBundles: tc.versionBundles,
+		}
 
 		service, err := New(config)
 		if tc.errorExpectedDuringInitialization {

@@ -65,15 +65,16 @@ func New(config Config) (*Service, error) {
 
 // Get returns the version response.
 func (s *Service) Get(ctx context.Context, request Request) (*Response, error) {
-	response := DefaultResponse()
 
-	response.Description = s.description
-	response.GitCommit = s.gitCommit
-	response.GoVersion = runtime.Version()
-	response.Name = s.name
-	response.OSArch = runtime.GOOS + "/" + runtime.GOARCH
-	response.Source = s.source
-	response.VersionBundles = s.versionBundles
+	response := &Response{
+		Description:    s.description,
+		GitCommit:      s.gitCommit,
+		GoVersion:      runtime.Version(),
+		Name:           s.name,
+		OSArch:         runtime.GOOS + "/" + runtime.GOARCH,
+		Source:         s.source,
+		VersionBundles: s.versionBundles,
+	}
 
 	return response, nil
 }
