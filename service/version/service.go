@@ -19,19 +19,6 @@ type Config struct {
 	VersionBundles []versionbundle.Bundle
 }
 
-// DefaultConfig provides a default configuration to create a new version service
-// by best effort.
-func DefaultConfig() Config {
-	return Config{
-		// Settings.
-		Description:    "",
-		GitCommit:      "",
-		Name:           "",
-		Source:         "",
-		VersionBundles: nil,
-	}
-}
-
 // Service implements the version service interface.
 type Service struct {
 	description    string
@@ -84,6 +71,7 @@ func New(config Config) (*Service, error) {
 
 // Get returns the version response.
 func (s *Service) Get(ctx context.Context, request Request) (*Response, error) {
+
 	response := &Response{
 		Description:    s.description,
 		GitCommit:      s.gitCommit,

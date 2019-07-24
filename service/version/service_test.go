@@ -211,7 +211,7 @@ func Test_Get(t *testing.T) {
 			}
 		} else {
 			if !tc.errorExpected {
-				response, err := service.Get(context.TODO(), DefaultRequest())
+				response, err := service.Get(context.TODO(), Request{})
 				if !tc.errorExpected && err != nil {
 					t.Fatal("case", i, "expected", nil, "got", err)
 				}
