@@ -174,7 +174,7 @@ func Test_Get(t *testing.T) {
 			},
 			errorExpected:                     false,
 			errorExpectedDuringInitialization: true,
-			result: Response{},
+			result:                            Response{},
 		},
 
 		// Case 3. Missing git commit.
@@ -185,7 +185,7 @@ func Test_Get(t *testing.T) {
 			source:                            "microkit",
 			errorExpected:                     true,
 			errorExpectedDuringInitialization: false,
-			result: Response{},
+			result:                            Response{},
 		},
 	}
 
