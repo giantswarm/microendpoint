@@ -190,12 +190,13 @@ func Test_Get(t *testing.T) {
 	}
 
 	for i, tc := range testCases {
-		config := DefaultConfig()
-		config.Description = tc.description
-		config.GitCommit = tc.gitCommit
-		config.Name = tc.name
-		config.Source = tc.source
-		config.VersionBundles = tc.versionBundles
+		config := Config{
+			Description:    tc.description,
+			GitCommit:      tc.gitCommit,
+			Name:           tc.name,
+			Source:         tc.source,
+			VersionBundles: tc.versionBundles,
+		}
 
 		service, err := New(config)
 		if tc.errorExpectedDuringInitialization {
@@ -204,7 +205,7 @@ func Test_Get(t *testing.T) {
 			}
 		} else {
 			if !tc.errorExpected {
-				response, err := service.Get(context.TODO(), DefaultRequest())
+				response, err := service.Get(context.TODO(), Request{})
 				if !tc.errorExpected && err != nil {
 					t.Fatal("case", i, "expected", nil, "got", err)
 				}
