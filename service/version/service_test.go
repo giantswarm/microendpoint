@@ -15,6 +15,7 @@ func Test_Get(t *testing.T) {
 		gitCommit                         string
 		name                              string
 		source                            string
+		version                           string
 		versionBundles                    []versionbundle.Bundle
 		errorExpected                     bool
 		errorExpectedDuringInitialization bool
@@ -26,6 +27,7 @@ func Test_Get(t *testing.T) {
 			gitCommit:                         "b6bf741b5c34be4fff51d944f973318d8b078284",
 			name:                              "api",
 			source:                            "microkit",
+			version:                           "1.0.0",
 			versionBundles:                    nil,
 			errorExpected:                     false,
 			errorExpectedDuringInitialization: false,
@@ -36,6 +38,7 @@ func Test_Get(t *testing.T) {
 				Name:           "api",
 				OSArch:         runtime.GOOS + "/" + runtime.GOARCH,
 				Source:         "microkit",
+				Version:        "1.0.0",
 				VersionBundles: nil,
 			},
 		},
@@ -46,6 +49,7 @@ func Test_Get(t *testing.T) {
 			gitCommit:   "b6bf741b5c34be4fff51d944f973318d8b078284",
 			name:        "api",
 			source:      "microkit",
+			version:     "1.0.0",
 			versionBundles: []versionbundle.Bundle{
 				{
 					Changelogs: []versionbundle.Changelog{
@@ -104,6 +108,7 @@ func Test_Get(t *testing.T) {
 				Name:        "api",
 				OSArch:      runtime.GOOS + "/" + runtime.GOARCH,
 				Source:      "microkit",
+				Version:     "1.0.0",
 				VersionBundles: []versionbundle.Bundle{
 					{
 						Changelogs: []versionbundle.Changelog{
@@ -195,6 +200,7 @@ func Test_Get(t *testing.T) {
 			GitCommit:      tc.gitCommit,
 			Name:           tc.name,
 			Source:         tc.source,
+			Version:        tc.version,
 			VersionBundles: tc.versionBundles,
 		}
 

@@ -78,6 +78,7 @@ func (e *Endpoint) Endpoint() kitendpoint.Endpoint {
 			Name:           serviceResponse.Name,
 			OSArch:         serviceResponse.OSArch,
 			Source:         serviceResponse.Source,
+			Version:        serviceResponse.Version,
 			VersionBundles: serviceResponse.VersionBundles,
 		}
 
