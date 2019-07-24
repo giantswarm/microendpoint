@@ -179,7 +179,7 @@ func Test_Get(t *testing.T) {
 			},
 			errorExpected:                     false,
 			errorExpectedDuringInitialization: true,
-			result: Response{},
+			result:                            Response{},
 		},
 
 		// Case 3. Missing git commit.
