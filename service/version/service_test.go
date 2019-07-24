@@ -179,7 +179,7 @@ func Test_Get(t *testing.T) {
 			},
 			errorExpected:                     false,
 			errorExpectedDuringInitialization: true,
-			result:                            Response{},
+			result: Response{},
 		},
 
 		// Case 3. Missing git commit.
@@ -211,7 +211,7 @@ func Test_Get(t *testing.T) {
 			}
 		} else {
 			if !tc.errorExpected {
-				response, err := service.Get(context.TODO(), Request{})
+				response, err := service.Get(context.TODO(), DefaultRequest())
 				if !tc.errorExpected && err != nil {
 					t.Fatal("case", i, "expected", nil, "got", err)
 				}
