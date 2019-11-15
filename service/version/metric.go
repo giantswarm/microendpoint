@@ -20,6 +20,7 @@ func init() {
 }
 
 func (s *Service) updateBuildInfoMetric() {
-	buildInfo.WithLabelValues(s.versionBundles[0].Version, s.gitCommit, runtime.Version(), runtime.GOOS, runtime.GOARCH).Set(1)
-	buildInfo.WithLabelValues("test", s.gitCommit, runtime.Version(), runtime.GOOS, runtime.GOARCH).Set(1)
+	for _, bundle := range s.versionBundles {
+		buildInfo.WithLabelValues(bundle.Version, s.gitCommit, runtime.Version(), runtime.GOOS, runtime.GOARCH).Set(1)
+	}
 }
