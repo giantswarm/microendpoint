@@ -6,7 +6,6 @@ orbs:
 workflows:
   test:
     jobs:
-      - architect/changelog-lint
       - architect/go-test:
           name: go-test
           filters:
