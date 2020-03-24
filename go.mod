@@ -7,5 +7,5 @@ require (
 	github.com/giantswarm/micrologger v0.3.1
 	github.com/giantswarm/versionbundle v0.2.0
 	github.com/go-kit/kit v0.10.0
-	github.com/prometheus/client_golang v1.3.0
+	github.com/prometheus/client_golang v1.5.1
 )
