@@ -52,18 +52,6 @@ func Test_Get(t *testing.T) {
 			version:     "1.0.0",
 			versionBundles: []versionbundle.Bundle{
 				{
-					Changelogs: []versionbundle.Changelog{
-						{
-							Component:   "etcd",
-							Description: "Etcd version updated.",
-							Kind:        "changed",
-						},
-						{
-							Component:   "kubernetes",
-							Description: "Kubernetes version updated.",
-							Kind:        "changed",
-						},
-					},
 					Components: []versionbundle.Component{
 						{
 							Name:    "etcd",
@@ -78,13 +66,6 @@ func Test_Get(t *testing.T) {
 					Version: "0.2.0",
 				},
 				{
-					Changelogs: []versionbundle.Changelog{
-						{
-							Component:   "kubernetes",
-							Description: "Kubernetes version updated.",
-							Kind:        "changed",
-						},
-					},
 					Components: []versionbundle.Component{
 						{
 							Name:    "etcd",
@@ -111,18 +92,6 @@ func Test_Get(t *testing.T) {
 				Version:     "1.0.0",
 				VersionBundles: []versionbundle.Bundle{
 					{
-						Changelogs: []versionbundle.Changelog{
-							{
-								Component:   "etcd",
-								Description: "Etcd version updated.",
-								Kind:        "changed",
-							},
-							{
-								Component:   "kubernetes",
-								Description: "Kubernetes version updated.",
-								Kind:        "changed",
-							},
-						},
 						Components: []versionbundle.Component{
 							{
 								Name:    "etcd",
@@ -137,13 +106,6 @@ func Test_Get(t *testing.T) {
 						Version: "0.2.0",
 					},
 					{
-						Changelogs: []versionbundle.Changelog{
-							{
-								Component:   "kubernetes",
-								Description: "Kubernetes version updated.",
-								Kind:        "changed",
-							},
-						},
 						Components: []versionbundle.Component{
 							{
 								Name:    "etcd",
@@ -163,7 +125,7 @@ func Test_Get(t *testing.T) {
 
 		// Case 2. Ensure version bundle validation during service initialization.
 		//
-		// NOTE that changelogs and components are required.
+		// NOTE that components are required.
 		{
 			description: "test desc",
 			gitCommit:   "b6bf741b5c34be4fff51d944f973318d8b078284",
@@ -171,7 +133,6 @@ func Test_Get(t *testing.T) {
 			source:      "microkit",
 			versionBundles: []versionbundle.Bundle{
 				{
-					Changelogs: []versionbundle.Changelog{},
 					Components: []versionbundle.Component{},
 					Name:       "cloud-config-operator",
 					Version:    "0.2.0",
