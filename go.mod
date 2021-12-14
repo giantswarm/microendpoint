@@ -1,6 +1,6 @@
 module github.com/giantswarm/microendpoint
 
-go 1.13
+go 1.17
 
 require (
 	github.com/giantswarm/microerror v0.4.0
