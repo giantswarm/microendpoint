@@ -9,9 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Fixed
+### Changed
 
 - Upgrade to Go 1.17
+- Upgrade github.com/giantswarm/versionbundle v0.2.0 to v0.3.0
+- Upgrade github.com/giantswarm/micrologger v0.5.0 to v0.6.0
+- Upgrade github.com/giantswarm/microerror v0.2.0 to v0.4.0
+- Upgrade giantswarm/architect 0.8.3 to 4.8.1
 
 ## [0.2.0] 2020-03-23
 
