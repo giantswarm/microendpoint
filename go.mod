@@ -28,3 +28,5 @@ require (
 	google.golang.org/protobuf v1.27.1 // indirect
 	gopkg.in/resty.v1 v1.12.0 // indirect
 )
+
+replace github.com/hashicorp/consul/api => github.com/hashicorp/consul/api v1.25.1
