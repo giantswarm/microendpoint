@@ -30,7 +30,7 @@ require (
 )
 
 replace (
-	github.com/hashicorp/consul/api => github.com/hashicorp/consul/api v1.25.1
+	github.com/hashicorp/consul/api => github.com/hashicorp/consul/api v1.26.1
 	golang.org/x/net => golang.org/x/net v0.17.0
 	google.golang.org/grpc => google.golang.org/grpc v1.59.0
 )
