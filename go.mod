@@ -29,8 +29,4 @@ require (
 	gopkg.in/resty.v1 v1.12.0 // indirect
 )
 
-replace (
-	github.com/hashicorp/consul/api => github.com/hashicorp/consul/api v1.25.1
-	golang.org/x/net => golang.org/x/net v0.17.0
-	google.golang.org/grpc => google.golang.org/grpc v1.59.0
-)
+replace golang.org/x/net => golang.org/x/net v0.17.0
