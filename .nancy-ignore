@@ -9,3 +9,6 @@ CVE-2022-26652
 CVE-2022-42709
 CVE-2022-42708
 CVE-2023-47090
+
+# pkg:golang/google.golang.org/protobuf@v1.31.0
+CVE-2024-24786 until=2024-03-31
