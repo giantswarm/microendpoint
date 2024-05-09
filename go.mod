@@ -7,7 +7,7 @@ require (
 	github.com/giantswarm/micrologger v1.1.1
 	github.com/giantswarm/versionbundle v1.1.0
 	github.com/go-kit/kit v0.13.0
-	github.com/prometheus/client_golang v1.19.0
+	github.com/prometheus/client_golang v1.19.1
 )
 
 require (
@@ -24,7 +24,7 @@ require (
 	golang.org/x/net v0.21.0 // indirect
 	golang.org/x/sync v0.5.0 // indirect
 	golang.org/x/sys v0.20.0 // indirect
-	google.golang.org/protobuf v1.32.0 // indirect
+	google.golang.org/protobuf v1.33.0 // indirect
 	gopkg.in/resty.v1 v1.12.0 // indirect
 )
 
