@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	github.com/giantswarm/microerror v0.4.1
-	github.com/giantswarm/micrologger v1.1.1
+	github.com/giantswarm/micrologger v1.1.2
 	github.com/giantswarm/versionbundle v1.1.0
 	github.com/go-kit/kit v0.13.0
 	github.com/prometheus/client_golang v1.20.5
@@ -16,7 +16,7 @@ require (
 	github.com/coreos/go-semver v0.3.1 // indirect
 	github.com/go-kit/log v0.2.1 // indirect
 	github.com/go-logfmt/logfmt v0.6.0 // indirect
-	github.com/go-logr/logr v1.3.0 // indirect
+	github.com/go-logr/logr v1.4.2 // indirect
 	github.com/go-stack/stack v1.8.1 // indirect
 	github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 // indirect
 	github.com/prometheus/client_model v0.6.1 // indirect
