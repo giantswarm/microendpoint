@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/giantswarm/microendpoint.svg?&style=shield&circle-token=ffd1b1181db2c6299afd9f2fdaa79699e447369e)](https://circleci.com/gh/giantswarm/microendpoint)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/giantswarm/microendpoint/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/giantswarm/microendpoint/tree/main)
 
 # microendpoint
 
