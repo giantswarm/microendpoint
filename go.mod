@@ -31,6 +31,6 @@ require (
 	gopkg.in/resty.v1 v1.12.0 // indirect
 )
 
-replace golang.org/x/net => golang.org/x/net v0.37.0
+replace golang.org/x/net => golang.org/x/net v0.38.0
 
 replace google.golang.org/protobuf v1.31.0 => google.golang.org/protobuf v1.33.0
