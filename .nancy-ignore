@@ -1,14 +1,1 @@
-# pkg:golang/github.com/hashicorp/consul/api@v1.25.1
-CVE-2022-29153 until=2024-05-31
-
-# github.com/nats-io/nats-server/v2
-CVE-2022-28357 until=2024-05-31
-CVE-2022-24450 until=2024-05-31
-CVE-2022-29946 until=2024-05-31
-CVE-2022-26652 until=2024-05-31
-CVE-2022-42709 until=2024-05-31
-CVE-2022-42708 until=2024-05-31
-CVE-2023-47090 until=2024-05-31
-
-# pkg:golang/google.golang.org/protobuf@v1.31.0
-CVE-2024-24786 until=2024-05-31
+CVE-2025-4673 until=2025-07-13 # golang.org/x/net@v0.41.0
