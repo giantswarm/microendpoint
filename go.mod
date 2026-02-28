@@ -1,6 +1,6 @@
 module github.com/giantswarm/microendpoint
 
-go 1.24.0
+go 1.25.0
 
 toolchain go1.26.0
 
@@ -33,6 +33,6 @@ require (
 	gopkg.in/resty.v1 v1.12.0 // indirect
 )
 
-replace golang.org/x/net => golang.org/x/net v0.50.0
+replace golang.org/x/net => golang.org/x/net v0.51.0
 
 replace google.golang.org/protobuf v1.31.0 => google.golang.org/protobuf v1.33.0
