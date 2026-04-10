@@ -26,13 +26,13 @@ require (
 	github.com/prometheus/common v0.66.1 // indirect
 	github.com/prometheus/procfs v0.16.1 // indirect
 	go.yaml.in/yaml/v2 v2.4.2 // indirect
-	golang.org/x/net v0.51.0 // indirect
+	golang.org/x/net v0.52.0 // indirect
 	golang.org/x/sync v0.20.0 // indirect
-	golang.org/x/sys v0.42.0 // indirect
+	golang.org/x/sys v0.43.0 // indirect
 	google.golang.org/protobuf v1.36.8 // indirect
 	gopkg.in/resty.v1 v1.12.0 // indirect
 )
 
-replace golang.org/x/net => golang.org/x/net v0.52.0
+replace golang.org/x/net => golang.org/x/net v0.53.0
 
 replace google.golang.org/protobuf v1.31.0 => google.golang.org/protobuf v1.33.0
