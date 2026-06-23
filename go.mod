@@ -36,3 +36,11 @@ require (
 replace golang.org/x/net => golang.org/x/net v0.56.0
 
 replace google.golang.org/protobuf v1.31.0 => google.golang.org/protobuf v1.33.0
+
+replace github.com/nats-io/nats-server/v2 v2.8.4 => github.com/nats-io/nats-server/v2 v2.14.2
+
+replace github.com/sirupsen/logrus v1.8.1 => github.com/sirupsen/logrus v1.9.4
+
+replace github.com/yuin/goldmark v1.4.13 => github.com/yuin/goldmark v1.8.2
+
+replace google.golang.org/grpc v1.40.0 => google.golang.org/grpc v1.81.1
