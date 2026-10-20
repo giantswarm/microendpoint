@@ -1,6 +1,6 @@
 module github.com/giantswarm/microendpoint
 
-go 1.25.0
+go 1.26.0
 
 toolchain go1.27.1
 
@@ -9,7 +9,7 @@ require (
 	github.com/giantswarm/micrologger v1.1.2
 	github.com/giantswarm/versionbundle v1.2.0
 	github.com/go-kit/kit v0.13.0
-	github.com/prometheus/client_golang v1.24.1
+	github.com/prometheus/client_golang v1.25.0
 )
 
 require (
@@ -21,13 +21,13 @@ require (
 	github.com/go-logr/logr v1.4.2 // indirect
 	github.com/go-stack/stack v1.8.1 // indirect
 	github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 // indirect
-	github.com/prometheus/client_model v0.6.2 // indirect
-	github.com/prometheus/common v0.70.1 // indirect
-	github.com/prometheus/procfs v0.21.1 // indirect
-	golang.org/x/net v0.57.0 // indirect
-	golang.org/x/sync v0.21.0 // indirect
-	golang.org/x/sys v0.47.0 // indirect
-	google.golang.org/protobuf v1.36.11 // indirect
+	github.com/prometheus/client_model v0.6.3 // indirect
+	github.com/prometheus/common v0.72.0 // indirect
+	github.com/prometheus/procfs v0.22.0 // indirect
+	golang.org/x/net v0.59.0 // indirect
+	golang.org/x/sync v0.22.0 // indirect
+	golang.org/x/sys v0.48.0 // indirect
+	google.golang.org/protobuf v1.36.12 // indirect
 	gopkg.in/resty.v1 v1.12.0 // indirect
 )
 
